@@ -1,0 +1,4 @@
+name: RealInvisibility
+version: '${version}'
+main: icu.suc.kevin557.realinvisibility.RealInvisibility
+api-version: '1.21'
