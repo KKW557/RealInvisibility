@@ -7,6 +7,12 @@ A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 Lightweight, only modifying outgoing packets.
 
 
+## Resource
+
+* [Modrinth](https://modrinth.com/plugin/realinvisibility)
+* [Hanger](https://hangar.papermc.io/KKW557/RealInvisibility)
+
+
 ## Dependency
 
 * [ProtocolLib](https://github.com/dmulloy2/ProtocolLib)
