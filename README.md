@@ -1,5 +1,7 @@
 # RealInvisibility
 
+![Image](https://cdn.modrinth.com/data/GJ2KsrYm/images/7dd8b018e0affdfb5dfe2319fc424a48bd605425.gif)
+
 A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 
 Lightweight, only modifying outgoing packets.
