@@ -4,6 +4,7 @@ A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 
 Lightweight, only modifying outgoing packets.
 
+
 ### Dependency
 
 * [ProtocolLib](https://github.com/dmulloy2/ProtocolLib)
