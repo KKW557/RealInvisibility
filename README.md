@@ -25,7 +25,7 @@ To build RealInvisibility, you need JDK 21 or higher installed on your system.
 * On Linux or macOS: `./gradlew build`
 * Windows: `gradlew build`
 
-you can then find builds of BridgingAnalyzer-Reborn in the `build/libs/` directory.
+you can then find builds of RealInvisibility in the `build/libs/` directory.
 
 
 ## Configuration
