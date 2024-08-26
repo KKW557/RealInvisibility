@@ -5,12 +5,12 @@ A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 Lightweight, only modifying outgoing packets.
 
 
-### Dependency
+## Dependency
 
 * [ProtocolLib](https://github.com/dmulloy2/ProtocolLib)
 
 
-### Compilation
+## Compilation
 
 To build RealInvisibility, you need JDK 21 or higher installed on your system.
 
@@ -20,7 +20,7 @@ To build RealInvisibility, you need JDK 21 or higher installed on your system.
 you can then find builds of BridgingAnalyzer-Reborn in the `build/libs/` directory.
 
 
-### Configuration
+## Configuration
 
 ```yml
 # Hide helmet?
@@ -40,6 +40,6 @@ arrows: true
 ```
 
 
-### License
+## License
 
 This project is licensed under the GPL GPL-3.0 license - see the [LICENSE](LICENSE) file for details.

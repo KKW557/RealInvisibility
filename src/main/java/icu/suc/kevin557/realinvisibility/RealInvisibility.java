@@ -96,7 +96,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
             if (action.equals(EntityPotionEffectEvent.Action.ADDED)) {
                 players.add(id);
                 update(player);
-            } else if (action.equals(EntityPotionEffectEvent.Action.REMOVED)) {
+            } else if (action.equals(EntityPotionEffectEvent.Action.REMOVED) || action.equals(EntityPotionEffectEvent.Action.CLEARED)) {
                 players.remove(id);
                 update(player);
             }
@@ -111,11 +111,11 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         NonNullList<net.minecraft.world.item.ItemStack> armor = inventory.armor;
         net.minecraft.world.item.ItemStack helmet = armor.get(3);
         if (!helmet.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.FEET, helmet));
+            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.HEAD, helmet));
         }
         net.minecraft.world.item.ItemStack chestplate = armor.get(2);
         if (!chestplate.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.LEGS, chestplate));
+            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.CHEST, chestplate));
         }
         net.minecraft.world.item.ItemStack leggings = armor.get(1);
         if (!leggings.isEmpty()) {
