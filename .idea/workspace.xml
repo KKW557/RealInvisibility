@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ff009f5-769f-4860-98c1-2dc83b8fa7fa" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" afterDir="false" />
-    </list>
+    <list default="true" id="8ff009f5-769f-4860-98c1-2dc83b8fa7fa" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,7 +149,7 @@
       <updated>1724579537894</updated>
       <workItem from="1724579538978" duration="9224000" />
       <workItem from="1724596047948" duration="16000" />
-      <workItem from="1724650538510" duration="2352000" />
+      <workItem from="1724650538510" duration="2686000" />
     </task>
     <servers />
   </component>
