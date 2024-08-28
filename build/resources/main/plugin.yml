@@ -1,5 +1,5 @@
 name: RealInvisibility
-version: '${version}'
+version: '1.2.1'
 main: icu.suc.kevin557.realinvisibility.RealInvisibility
 api-version: '1.21'
 depends: [ ProtocolLib ]
