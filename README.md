@@ -4,13 +4,18 @@
 
 A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 
-Lightweight, only modifying outgoing packets.
+## Features
+
+* **Packet-Level**, doesn't affect vanilla and can work with another plugin.
+* Hide **Armors**, **Arrows in Body** and **Effect Particles**(soon).
+* **Configurable** fully
 
 
-## Resource
+## Download
 
 * [Modrinth](https://modrinth.com/plugin/realinvisibility)
 * [Hanger](https://hangar.papermc.io/KKW557/RealInvisibility)
+* [Github Release](https://github.com/KKW557/RealInvisibility/releases)
 
 
 ## Dependency
@@ -20,12 +25,12 @@ Lightweight, only modifying outgoing packets.
 
 ## Compilation
 
-To build RealInvisibility, you need JDK 21 or higher installed on your system.
+To build **RealInvisibility**, you need JDK 21 or higher installed on your system.
 
-* On Linux or macOS: `./gradlew build`
+* Linux or macOS: `./gradlew build`
 * Windows: `gradlew build`
 
-you can then find builds of RealInvisibility in the `build/libs/` directory.
+you can then find builds of **RealInvisibility** in the `build/libs/` directory.
 
 
 ## Configuration
@@ -46,6 +51,12 @@ offhand: true
 # Hide arrows in body?
 arrows: true
 ```
+
+
+## Donation
+
+* [Patreon](https://www.patreon.com/kkw557/membership)
+* [Afdian](https://afdian.com/a/megawalls78)
 
 
 ## License
