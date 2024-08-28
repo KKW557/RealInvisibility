@@ -13,9 +13,10 @@ import com.comphenix.protocol.wrappers.WrappedDataValue;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
-import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
+import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerPlayerConnection;
@@ -23,6 +24,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
+import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -33,15 +35,27 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public final class RealInvisibility extends JavaPlugin implements Listener {
 
+    private static EntityDataAccessor<Integer> DATA_ARROW_COUNT_ID;
+    private static EntityDataAccessor<List<ParticleOptions>> DATA_EFFECT_PARTICLES;
     private static int MV_ARROWS;
-    private static byte MV_PARTICLES;
+    private static int MV_PARTICLES;
+
+    private boolean helmet;
+    private boolean chestplate;
+    private boolean leggings;
+    private boolean boots;
+    private boolean mainhand;
+    private boolean offhand;
+    private boolean arrows;
+    private boolean particles;
+
+    private boolean equipment;
+    private boolean metadata;
 
     private Set<EnumWrappers.ItemSlot> slots;
 
@@ -62,40 +76,64 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         config.options().copyDefaults(true);
         saveConfig();
 
-        slots = Sets.newHashSet();
-        if (config.getBoolean("helmet")) {
-            slots.add(EnumWrappers.ItemSlot.HEAD);
-        }
-        if (config.getBoolean("chestplate")) {
-            slots.add(EnumWrappers.ItemSlot.CHEST);
-        }
-        if (config.getBoolean("leggings")) {
-            slots.add(EnumWrappers.ItemSlot.LEGS);
-        }
-        if (config.getBoolean("boots")) {
-            slots.add(EnumWrappers.ItemSlot.FEET);
-        }
-        if (config.getBoolean("mainhand")) {
-            slots.add(EnumWrappers.ItemSlot.MAINHAND);
-        }
-        if (config.getBoolean("offhand")) {
-            slots.add(EnumWrappers.ItemSlot.OFFHAND);
+        helmet = config.getBoolean("helmet");
+        chestplate = config.getBoolean("chestplate");
+        leggings = config.getBoolean("leggings");
+        boots = config.getBoolean("boots");
+        mainhand = config.getBoolean("mainhand");
+        offhand = config.getBoolean("offhand");
+        arrows = config.getBoolean("arrows");
+        particles = config.getBoolean("particles");
+
+        equipment = helmet || chestplate || leggings || boots || mainhand || offhand;
+
+        if (equipment) {
+            slots = Sets.newHashSet();
+            if (helmet) {
+                slots.add(EnumWrappers.ItemSlot.HEAD);
+            }
+            if (chestplate) {
+                slots.add(EnumWrappers.ItemSlot.CHEST);
+            }
+            if (leggings) {
+                slots.add(EnumWrappers.ItemSlot.LEGS);
+            }
+            if (boots) {
+                slots.add(EnumWrappers.ItemSlot.FEET);
+            }
+            if (mainhand) {
+                slots.add(EnumWrappers.ItemSlot.MAINHAND);
+            }
+            if (offhand) {
+                slots.add(EnumWrappers.ItemSlot.OFFHAND);
+            }
         }
 
-        players = Sets.newHashSet();
+        if (equipment) {
+            ProtocolLibrary.getProtocolManager().addPacketListener(new EntityEquipmentAdapter());
+        }
 
-        getServer().getPluginManager().registerEvents(this, this);
-
-        ProtocolLibrary.getProtocolManager().addPacketListener(new EntityEquipmentAdapter());
-
-        if (config.getBoolean("arrows")) {
-            MV_ARROWS = LivingEntity.DATA_ARROW_COUNT_ID.id();
+        if (arrows) {
+            DATA_ARROW_COUNT_ID = LivingEntity.DATA_ARROW_COUNT_ID;
+            MV_ARROWS = DATA_ARROW_COUNT_ID.id();
+        }
+        if (particles) {
+            try {
+                DATA_EFFECT_PARTICLES = (EntityDataAccessor<List<ParticleOptions>>) FieldUtils.readStaticField(LivingEntity.class, "DATA_EFFECT_PARTICLES", true);
+                MV_PARTICLES = DATA_EFFECT_PARTICLES.id();
+            } catch (Exception e) {
+                particles = false;
+            }
+        }
+        if (arrows || particles) {
             ProtocolLibrary.getProtocolManager().addPacketListener(new EntityMetadataAdapter());
+            metadata = true;
         }
 
-        if (config.getBoolean("particles")) {
-            MV_PARTICLES = 2;
-            ProtocolLibrary.getProtocolManager().addPacketListener(new EntityEffectAdapter());
+        if (equipment && metadata) {
+            players = Sets.newHashSet();
+
+            getServer().getPluginManager().registerEvents(this, this);
         }
     }
 
@@ -118,55 +156,69 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         ServerPlayer handle = ((CraftPlayer) player).getHandle();
 
         List<com.mojang.datafixers.util.Pair<EquipmentSlot, net.minecraft.world.item.ItemStack>> equipmentList = Lists.newArrayList();
-        Inventory inventory = handle.getInventory();
-        NonNullList<net.minecraft.world.item.ItemStack> armor = inventory.armor;
-        net.minecraft.world.item.ItemStack helmet = armor.get(3);
-        if (!helmet.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.HEAD, helmet));
-        }
-        net.minecraft.world.item.ItemStack chestplate = armor.get(2);
-        if (!chestplate.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.CHEST, chestplate));
-        }
-        net.minecraft.world.item.ItemStack leggings = armor.get(1);
-        if (!leggings.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.LEGS, leggings));
-        }
-        net.minecraft.world.item.ItemStack boots = armor.get(0);
-        if (!boots.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.FEET, boots));
-        }
-        net.minecraft.world.item.ItemStack mainhand = inventory.getSelected();
-        if (!mainhand.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.MAINHAND, mainhand));
-        }
-        net.minecraft.world.item.ItemStack offhand = inventory.offhand.getFirst();
-        if (!offhand.isEmpty()) {
-            equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.OFFHAND, offhand));
-        }
+        if (equipment) {
 
-        List<SynchedEntityData.DataValue<?>> dataList = handle.getEntityData().packDirty();
-        if (dataList == null) {
-            dataList = Lists.newArrayList();
-        }
-        boolean flag = true;
-        for (SynchedEntityData.DataValue<?> value : dataList) {
-            if (value.id() == MV_ARROWS) {
-                flag = false;
-                break;
+            Inventory inventory = handle.getInventory();
+            NonNullList<net.minecraft.world.item.ItemStack> armor = inventory.armor;
+
+            if (helmet) {
+                net.minecraft.world.item.ItemStack helmet = armor.get(3);
+                if (!helmet.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.HEAD, helmet));
+                }
+            }
+            if (chestplate) {
+                net.minecraft.world.item.ItemStack chestplate = armor.get(2);
+                if (!chestplate.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.CHEST, chestplate));
+                }
+            }
+            if (leggings) {
+                net.minecraft.world.item.ItemStack leggings = armor.get(1);
+                if (!leggings.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.LEGS, leggings));
+                }
+            }
+            if (boots) {
+                net.minecraft.world.item.ItemStack boots = armor.getFirst();
+                if (!boots.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.FEET, boots));
+                }
+            }
+            if (mainhand) {
+                net.minecraft.world.item.ItemStack mainhand = inventory.getSelected();
+                if (!mainhand.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.MAINHAND, mainhand));
+                }
+            }
+            if (offhand) {
+                net.minecraft.world.item.ItemStack offhand = inventory.offhand.getFirst();
+                if (!offhand.isEmpty()) {
+                    equipmentList.add(new com.mojang.datafixers.util.Pair<>(EquipmentSlot.OFFHAND, offhand));
+                }
             }
         }
-        if (flag) {
-            dataList.add(SynchedEntityData.DataValue.create(LivingEntity.DATA_ARROW_COUNT_ID, player.getArrowsInBody()));
+
+        List<SynchedEntityData.DataValue<?>> dataList = Lists.newArrayList();
+        if (metadata) {
+            if (arrows) {
+                dataList.add(SynchedEntityData.DataValue.create(DATA_ARROW_COUNT_ID, player.getArrowsInBody()));
+            }
+            if (particles) {
+                List<ParticleOptions> list = handle.activeEffects.values().stream().filter(effect -> !effect.isVisible()).map(MobEffectInstance::getParticleOptions).toList();
+                if (!list.isEmpty()) {
+                    dataList.add(SynchedEntityData.DataValue.create(DATA_EFFECT_PARTICLES, list));
+                }
+            }
         }
 
         int id = handle.getId();
         for (ServerPlayerConnection connection : handle.moonrise$getTrackedEntity().seenBy) {
-            connection.send(new ClientboundSetEquipmentPacket(id, equipmentList, true));
-            connection.send(new ClientboundSetEntityDataPacket(id, dataList));
-
-            for (MobEffectInstance effect : handle.getActiveEffects()) {
-                connection.send(new ClientboundUpdateMobEffectPacket(id, effect, false));
+            if (!equipmentList.isEmpty()) {
+                connection.send(new ClientboundSetEquipmentPacket(id, equipmentList, true));
+            }
+            if (!dataList.isEmpty()) {
+                connection.send(new ClientboundSetEntityDataPacket(id, dataList));
             }
         }
     }
@@ -211,32 +263,14 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
                 StructureModifier<List<WrappedDataValue>> modifier = packet.getDataValueCollectionModifier();
                 List<WrappedDataValue> list = modifier.readSafely(0);
                 for (WrappedDataValue value : list) {
-                    if (value.getIndex() == MV_ARROWS) {
+                    if (arrows && value.getIndex() == MV_ARROWS) {
                         value.setValue(0);
+                    }
+                    if (particles && value.getIndex() == MV_PARTICLES) {
+                        value.setValue(List.of());
                     }
                 }
                 modifier.writeSafely(0, list);
-            }
-        }
-    }
-
-    public class EntityEffectAdapter extends PacketAdapter {
-
-        public EntityEffectAdapter() {
-            super(RealInvisibility.this, ListenerPriority.MONITOR, PacketType.Play.Server.ENTITY_EFFECT);
-        }
-
-        @Override
-        public void onPacketSending(PacketEvent event) {
-            PacketContainer packet = event.getPacket();
-            int id = packet.getIntegers().readSafely(0);
-            if (players.contains(id) && event.getPlayer().getEntityId() != id) {
-                StructureModifier<Byte> modifier = packet.getBytes();
-                byte flags = modifier.readSafely(0);
-                if ((flags & MV_PARTICLES) != MV_PARTICLES) {
-                    flags |= MV_PARTICLES;
-                }
-                modifier.writeSafely(0, flags);
             }
         }
     }
