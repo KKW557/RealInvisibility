@@ -7,8 +7,10 @@ A Paper plugin designed for improving vanilla invisibility effect in Minecraft.
 ## Features
 
 * **Packet-Level**, doesn't affect vanilla and can work with another plugin.
-* Hide **Armors**, **Arrows in Body** and **Effect Particles**(soon).
-* **Configurable** fully
+* Hide **Equipments**.
+* Hide **Arrows in Body**.
+* Hide **Effect Particles**.
+* **Configurable** fully.
 
 
 ## Download
@@ -50,6 +52,8 @@ mainhand: true
 offhand: true
 # Hide arrows in body?
 arrows: true
+# Hide effect particles?
+particles: true
 ```
 
 

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "icu.suc.kevin557.realinvisibility"
-version = "1.0.1"
+version = "1.1.0"
 
 java {
   toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -30,6 +30,6 @@ tasks {
     options.release = 21
   }
   javadoc {
-    options.encoding = Charsets.UTF_8.name() // We want UTF-8 for everything
+    options.encoding = Charsets.UTF_8.name()
   }
 }

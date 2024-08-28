@@ -15,9 +15,11 @@ import com.google.common.collect.Sets;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
+import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerPlayerConnection;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -31,16 +33,19 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 public final class RealInvisibility extends JavaPlugin implements Listener {
 
+    private static int MV_ARROWS;
+    private static byte MV_PARTICLES;
+
     private Set<EnumWrappers.ItemSlot> slots;
 
     private Set<Integer> players;
-    private int arrows;
 
     @Override
     public void onEnable() {
@@ -53,6 +58,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         config.addDefault("mainhand", true);
         config.addDefault("offhand", true);
         config.addDefault("arrows", true);
+        config.addDefault("particles", true);
         config.options().copyDefaults(true);
         saveConfig();
 
@@ -83,8 +89,13 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         ProtocolLibrary.getProtocolManager().addPacketListener(new EntityEquipmentAdapter());
 
         if (config.getBoolean("arrows")) {
-            arrows = LivingEntity.DATA_ARROW_COUNT_ID.id();
+            MV_ARROWS = LivingEntity.DATA_ARROW_COUNT_ID.id();
             ProtocolLibrary.getProtocolManager().addPacketListener(new EntityMetadataAdapter());
+        }
+
+        if (config.getBoolean("particles")) {
+            MV_PARTICLES = 2;
+            ProtocolLibrary.getProtocolManager().addPacketListener(new EntityEffectAdapter());
         }
     }
 
@@ -140,7 +151,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         }
         boolean flag = true;
         for (SynchedEntityData.DataValue<?> value : dataList) {
-            if (value.id() == arrows) {
+            if (value.id() == MV_ARROWS) {
                 flag = false;
                 break;
             }
@@ -153,6 +164,10 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         for (ServerPlayerConnection connection : handle.moonrise$getTrackedEntity().seenBy) {
             connection.send(new ClientboundSetEquipmentPacket(id, equipmentList, true));
             connection.send(new ClientboundSetEntityDataPacket(id, dataList));
+
+            for (MobEffectInstance effect : handle.getActiveEffects()) {
+                connection.send(new ClientboundUpdateMobEffectPacket(id, effect, false));
+            }
         }
     }
 
@@ -166,7 +181,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         public void onPacketSending(PacketEvent event) {
             PacketContainer packet = event.getPacket();
             int id = packet.getIntegers().readSafely(0);
-            if (players.contains(id)) {
+            if (players.contains(id) && event.getPlayer().getEntityId() != id) {
                 StructureModifier<List<Pair<EnumWrappers.ItemSlot, ItemStack>>> modifier = packet.getSlotStackPairLists();
                 List<Pair<EnumWrappers.ItemSlot, ItemStack>> list = modifier.readSafely(0);
                 for (Pair<EnumWrappers.ItemSlot, ItemStack> pair : list) {
@@ -192,15 +207,36 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         public void onPacketSending(PacketEvent event) {
             PacketContainer packet = event.getPacket();
             int id = packet.getIntegers().readSafely(0);
-            if (players.contains(id)) {
+            if (players.contains(id) && event.getPlayer().getEntityId() != id) {
                 StructureModifier<List<WrappedDataValue>> modifier = packet.getDataValueCollectionModifier();
                 List<WrappedDataValue> list = modifier.readSafely(0);
                 for (WrappedDataValue value : list) {
-                    if (value.getIndex() == arrows) {
+                    if (value.getIndex() == MV_ARROWS) {
                         value.setValue(0);
                     }
                 }
                 modifier.writeSafely(0, list);
+            }
+        }
+    }
+
+    public class EntityEffectAdapter extends PacketAdapter {
+
+        public EntityEffectAdapter() {
+            super(RealInvisibility.this, ListenerPriority.MONITOR, PacketType.Play.Server.ENTITY_EFFECT);
+        }
+
+        @Override
+        public void onPacketSending(PacketEvent event) {
+            PacketContainer packet = event.getPacket();
+            int id = packet.getIntegers().readSafely(0);
+            if (players.contains(id) && event.getPlayer().getEntityId() != id) {
+                StructureModifier<Byte> modifier = packet.getBytes();
+                byte flags = modifier.readSafely(0);
+                if ((flags & MV_PARTICLES) != MV_PARTICLES) {
+                    flags |= MV_PARTICLES;
+                }
+                modifier.writeSafely(0, flags);
             }
         }
     }
