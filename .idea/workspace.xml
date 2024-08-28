@@ -10,19 +10,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility$EntityEquipmentAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility$EntityEquipmentAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility$EntityMetadataAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility$EntityMetadataAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/icu/suc/kevin557/realinvisibility/RealInvisibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RealInvisibility$EntityEquipmentAdapter.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RealInvisibility$EntityEquipmentAdapter.class.uniqueId0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RealInvisibility$EntityMetadataAdapter.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RealInvisibility.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +176,7 @@
       <workItem from="1724650538510" duration="5319000" />
       <workItem from="1724676444998" duration="128000" />
       <workItem from="1724810376453" duration="3869000" />
-      <workItem from="1724815586690" duration="3302000" />
+      <workItem from="1724815586690" duration="3885000" />
     </task>
     <servers />
   </component>
