@@ -1,4 +1,4 @@
-# RealInvisibility
+# Real Invisibility
 
 ![Image](https://cdn.modrinth.com/data/GJ2KsrYm/images/7dd8b018e0affdfb5dfe2319fc424a48bd605425.gif)
 
