@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ff009f5-769f-4860-98c1-2dc83b8fa7fa" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/icu/suc/kevin557/realinvisibility/RealInvisibility.java" afterDir="false" />
-    </list>
+    <list default="true" id="8ff009f5-769f-4860-98c1-2dc83b8fa7fa" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,8 +150,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -175,6 +172,7 @@
       <workItem from="1724918817108" duration="2101000" />
       <workItem from="1724924326070" duration="1397000" />
       <workItem from="1724938738989" duration="48000" />
+      <workItem from="1725184335408" duration="693000" />
     </task>
     <servers />
   </component>

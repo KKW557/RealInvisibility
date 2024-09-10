@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "icu.suc.kevin557.realinvisibility"
-version = "1.2.1"
+version = "1.2.2"
 
 java {
   toolchain.languageVersion = JavaLanguageVersion.of(21)
