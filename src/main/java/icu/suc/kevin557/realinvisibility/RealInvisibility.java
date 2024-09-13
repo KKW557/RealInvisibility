@@ -34,6 +34,7 @@ import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Set;
@@ -62,28 +63,29 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
     private Set<Integer> players;
 
     @Override
+    @SuppressWarnings("unchecked")
     public void onEnable() {
-        saveDefaultConfig();
         Configuration config = getConfig();
-        config.addDefault("helmet", true);
-        config.addDefault("chestplate", true);
-        config.addDefault("leggings", true);
-        config.addDefault("boots", true);
-        config.addDefault("mainhand", true);
-        config.addDefault("offhand", true);
-        config.addDefault("arrows", true);
-        config.addDefault("particles", true);
+        config.addDefault("metrics", true);
+        config.addDefault("hide.helmet", true);
+        config.addDefault("hide.chestplate", true);
+        config.addDefault("hide.leggings", true);
+        config.addDefault("hide.boots", true);
+        config.addDefault("hide.mainhand", true);
+        config.addDefault("hide.offhand", true);
+        config.addDefault("hide.arrows", true);
+        config.addDefault("hide.particles", true);
         config.options().copyDefaults(true);
         saveConfig();
 
-        helmet = config.getBoolean("helmet");
-        chestplate = config.getBoolean("chestplate");
-        leggings = config.getBoolean("leggings");
-        boots = config.getBoolean("boots");
-        mainhand = config.getBoolean("mainhand");
-        offhand = config.getBoolean("offhand");
-        arrows = config.getBoolean("arrows");
-        particles = config.getBoolean("particles");
+        helmet = config.getBoolean("hide.helmet");
+        chestplate = config.getBoolean("hide.chestplate");
+        leggings = config.getBoolean("hide.leggings");
+        boots = config.getBoolean("hide.boots");
+        mainhand = config.getBoolean("hide.mainhand");
+        offhand = config.getBoolean("hide.offhand");
+        arrows = config.getBoolean("hide.arrows");
+        particles = config.getBoolean("hide.particles");
 
         equipment = helmet || chestplate || leggings || boots || mainhand || offhand;
 
@@ -134,21 +136,6 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
             players = Sets.newHashSet();
 
             getServer().getPluginManager().registerEvents(this, this);
-        }
-    }
-
-    @EventHandler
-    public void onEntityPotionEffect(EntityPotionEffectEvent event) {
-        if (event.getEntity() instanceof Player player && event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
-            int id = player.getEntityId();
-            EntityPotionEffectEvent.Action action = event.getAction();
-            if (action.equals(EntityPotionEffectEvent.Action.ADDED)) {
-                players.add(id);
-                update(player);
-            } else if (action.equals(EntityPotionEffectEvent.Action.REMOVED) || action.equals(EntityPotionEffectEvent.Action.CLEARED)) {
-                players.remove(id);
-                update(player);
-            }
         }
     }
 
@@ -223,6 +210,21 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         }
     }
 
+    @EventHandler
+    public void onEntityPotionEffect(@NotNull EntityPotionEffectEvent event) {
+        if (event.getEntity() instanceof Player player && event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
+            int id = player.getEntityId();
+            EntityPotionEffectEvent.Action action = event.getAction();
+            if (action.equals(EntityPotionEffectEvent.Action.ADDED)) {
+                players.add(id);
+                update(player);
+            } else if (action.equals(EntityPotionEffectEvent.Action.REMOVED) || action.equals(EntityPotionEffectEvent.Action.CLEARED)) {
+                players.remove(id);
+                update(player);
+            }
+        }
+    }
+
     public class EntityEquipmentAdapter extends PacketAdapter {
 
         public EntityEquipmentAdapter() {
@@ -230,7 +232,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         }
 
         @Override
-        public void onPacketSending(PacketEvent event) {
+        public void onPacketSending(@NotNull PacketEvent event) {
             PacketContainer packet = event.getPacket();
             int id = packet.getIntegers().readSafely(0);
             if (players.contains(id) && event.getPlayer().getEntityId() != id) {
@@ -256,7 +258,7 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
         }
 
         @Override
-        public void onPacketSending(PacketEvent event) {
+        public void onPacketSending(@NotNull PacketEvent event) {
             PacketContainer packet = event.getPacket();
             int id = packet.getIntegers().readSafely(0);
             if (players.contains(id) && event.getPlayer().getEntityId() != id) {
@@ -264,13 +266,12 @@ public final class RealInvisibility extends JavaPlugin implements Listener {
                 List<WrappedDataValue> list = modifier.readSafely(0);
                 for (WrappedDataValue value : list) {
                     if (arrows && value.getIndex() == MV_ARROWS) {
-                        value.setValue(0);
+                        value.setRawValue(0);
                     }
                     if (particles && value.getIndex() == MV_PARTICLES) {
-                        value.setValue(List.of());
+                        value.setRawValue(List.of());
                     }
                 }
-                modifier.writeSafely(0, list);
             }
         }
     }

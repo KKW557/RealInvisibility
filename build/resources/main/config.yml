@@ -1,8 +1,11 @@
-helmet: true
-chestplate: true
-leggings: true
-boots: true
-mainhand: true
-offhand: true
-arrows: true
-particles: true
+metrics: true
+
+hide:
+  helmet: true
+  chestplate: true
+  leggings: true
+  boots: true
+  mainhand: true
+  offhand: true
+  arrows: true
+  particles: true
