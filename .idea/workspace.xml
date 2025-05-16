@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ccd44d2-cab7-4c63-9171-36ec59254110" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Indexes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Listener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Updater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/resources/indexes.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/resources/settings.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs.versions.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paper/src/main/resources/plugin.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +46,6 @@
                 <item name="RealInvisibility" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RealInvisibility" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -87,6 +65,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KKW557&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KKW557/RealInvisibility.git&quot;,
+    &quot;accountId&quot;: &quot;984c4752-58ad-4eab-b443-d46db4f1a2e5&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$PROJECT_DIR$/paper/.gradle/caches/paperweight/taskCache/mappedServerJar.jar!/net/minecraft/server/network/ServerCommonPacketListenerImpl.java" root0="SKIP_INSPECTION" />
   </component>
@@ -105,43 +95,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.real-invisibility [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.real-invisibility [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.real-invisibility:common [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.real-invisibility:fabric [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.real-invisibility:spigot [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.下载源代码.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\glutt\\AppData\\Roaming\\JetBrains\\IntelliJIdea2024.1\\plugins\\Shell Script\\shellcheck.exe&quot;,
-    &quot;Shell Script.未命名.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JDK&quot;: &quot;zulu-21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Development/Java/real-invisibility&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.real-invisibility [build].executor": "Run",
+    "Gradle.real-invisibility [clean].executor": "Run",
+    "Gradle.real-invisibility:common [build].executor": "Run",
+    "Gradle.real-invisibility:fabric [build].executor": "Run",
+    "Gradle.real-invisibility:spigot [build].executor": "Run",
+    "Gradle.下载源代码.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\glutt\\AppData\\Roaming\\JetBrains\\IntelliJIdea2024.1\\plugins\\Shell Script\\shellcheck.exe",
+    "Shell Script.未命名.executor": "Run",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JDK": "zulu-21",
+    "last_opened_file_path": "F:/Development/Java/RealInvisibility",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "http.proxy",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;jdk.preference.JDK&quot;: [
-      &quot;21=D:/Java/zulu21.34.19-ca-jdk21.0.3-win_x64&quot;
+  "keyToStringList": {
+    "jdk.preference.JDK": [
+      "21=D:/Java/zulu21.34.19-ca-jdk21.0.3-win_x64"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Development\Java\real-invisibility" />
       <recent name="F:\Development\Java\real-invisibility\fabric\src\main\resources" />
+      <recent name="F:\Development\Java\real-invisibility" />
       <recent name="F:\Development\Java\real-invisibility\common\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -256,10 +246,23 @@
       <workItem from="1747153190693" duration="145000" />
       <workItem from="1747313683262" duration="9211000" />
       <workItem from="1747375020165" duration="36000" />
+      <workItem from="1747381141958" duration="6878000" />
+      <workItem from="1747404698398" duration="1432000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

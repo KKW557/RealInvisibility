@@ -18,5 +18,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RealInvisibility"
+rootProject.name = "realinvisibility"
 include("common", "fabric", "paper")
