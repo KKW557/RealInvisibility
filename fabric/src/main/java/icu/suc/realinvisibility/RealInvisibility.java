@@ -38,29 +38,33 @@ public class RealInvisibility implements ModInitializer {
         if (settings.equipment && settings.metadata) {
             UPDATER = new Updater(data, settings);
 
-            ServerEvents.Player.MODIFY_JOIN_MESSAGE.register((player, message) -> {
+            ServerEvents.Player.Join.ALLOW_MESSAGE.register((player, message) -> {
                 if (player.hasEffect(MobEffects.INVISIBILITY)) {
                     ID.add(player.getId());
                 }
-                return message;
+                return true;
             });
             ServerEvents.LivingEntity.Effect.ADD.register((affectedEntity, effect, sourceEntity) -> {
-                int id = affectedEntity.getId();
-                ID.add(id);
-                UPDATER.$(affectedEntity);
+                if (effect.getEffect().equals(MobEffects.INVISIBILITY)) {
+                    int id = affectedEntity.getId();
+                    ID.add(id);
+                    UPDATER.$(affectedEntity);
+                }
                 return true;
             });
             ServerEvents.LivingEntity.Effect.REMOVE.register((entity, effect) -> {
-                int id = entity.getId();
-                ID.remove(id);
-                UPDATER.$(entity);
+                if (effect.getEffect().equals(MobEffects.INVISIBILITY)) {
+                    int id = entity.getId();
+                    ID.remove(id);
+                    UPDATER.$(entity);
+                }
                 return true;
             });
-            ServerEvents.Player.MODIFY_LEAVE_MESSAGE.register((player, message) -> {
+            ServerEvents.Player.Leave.ALLOW_MESSAGE.register((player, message) -> {
                 if (player.hasEffect(MobEffects.INVISIBILITY)) {
                     ID.remove(player.getId());
                 }
-                return message;
+                return true;
             });
             ServerEvents.Connection.Send.MODIFY.register((packetListener, packet) -> {
                 if (packetListener instanceof ServerGamePacketListenerImpl serverGamePacketListener) {
@@ -82,22 +86,26 @@ public class RealInvisibility implements ModInitializer {
                             int id, List<SynchedEntityData.DataValue<?>> values
                     )) {
                         if (ID.contains(id) && serverGamePacketListener.getPlayer().getId() != id) {
-                            for (int i = 0; i < values.size(); i++) {
-                                var value = values.get(i);
+                            var list = new ArrayList<SynchedEntityData.DataValue<?>>();
+                            for (SynchedEntityData.DataValue<?> value : values) {
                                 int index = value.id();
                                 if (settings.particles && index == data.DATA_EFFECT_PARTICLES()) {
-                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_EFFECT_PARTICLES, List.of()));
+                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_EFFECT_PARTICLES, List.of()));
                                 }
                                 else if (settings.arrows && index == data.DATA_ARROW_COUNT_ID()) {
-                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_ARROW_COUNT_ID, 0));
+                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_ARROW_COUNT_ID, 0));
                                 }
                                 else if (settings.stingers && index == data.DATA_STINGER_COUNT_ID()) {
-                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_STINGER_COUNT_ID, 0));
+                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_STINGER_COUNT_ID, 0));
                                 }
                                 else if (settings.fire && index == data.DATA_SHARED_FLAGS_ID()) {
-                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_SHARED_FLAGS_ID, (byte) ((byte) value.value() & ~data.BIT_MAP_FIRE())));
+                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_SHARED_FLAGS_ID, (byte) ((byte) value.value() & ~data.BIT_MAP_FIRE())));
+                                }
+                                else {
+                                    list.add(value);
                                 }
                             }
+                            return new ClientboundSetEntityDataPacket(id, list);
                         }
                     }
                 }

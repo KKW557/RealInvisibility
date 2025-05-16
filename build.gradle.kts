@@ -1,5 +1,3 @@
-import java.util.Locale
-
 group = "icu.suc"
 version = "2.1.0"
 
