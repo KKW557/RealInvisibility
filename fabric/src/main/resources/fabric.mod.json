@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "realinvisibility",
+  "version": "${version}",
+  "name": "Real Invisibility",
+  "description": "",
+  "authors": [
+    "557"
+  ],
+  "contact": {
+    "repo": "https://github.com/KKW557/RealInvisibility"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "icu.suc.realinvisibility.RealInvisibility"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": ">=${minecraft_version}",
+    "serverevents": ">=${serverevents_version}"
+  }
+}

@@ -1,0 +1,20 @@
+[versions]
+minecraft = "1.21.5"
+fabric-loader = "0.16.14"
+fabric-api = "0.124.0+1.21.5"
+packetevents = "2.8.0"
+fabric-loom = "1.11.0-alpha.24"
+paperweight = "2.0.0-beta.16"
+serverevents = "1.0.4"
+userdev = "1.21.5-R0.1-SNAPSHOT"
+
+[libraries]
+minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
+packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents" }
+serverevents = { group = "icu.suc", name = "serverevents", version.ref = "serverevents" }
+
+[plugins]
+fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
+paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
