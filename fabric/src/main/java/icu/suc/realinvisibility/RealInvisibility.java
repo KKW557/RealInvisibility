@@ -32,11 +32,11 @@ public class RealInvisibility implements ModInitializer {
             if (body) set.add(EquipmentSlot.BODY);
             return set;
         });
-        var indexes = config.getA();
+        var data = config.getA();
         var settings = config.getB();
 
         if (settings.equipment && settings.metadata) {
-            UPDATER = new Updater(indexes, settings);
+            UPDATER = new Updater(data, settings);
 
             ServerEvents.Player.MODIFY_JOIN_MESSAGE.register((player, message) -> {
                 if (player.hasEffect(MobEffects.INVISIBILITY)) {
@@ -85,11 +85,17 @@ public class RealInvisibility implements ModInitializer {
                             for (int i = 0; i < values.size(); i++) {
                                 var value = values.get(i);
                                 int index = value.id();
-                                if (settings.particles && index == indexes.particles()) {
+                                if (settings.particles && index == data.DATA_EFFECT_PARTICLES()) {
                                     values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_EFFECT_PARTICLES, List.of()));
                                 }
-                                else if (settings.arrows && index == indexes.arrows()) {
+                                else if (settings.arrows && index == data.DATA_ARROW_COUNT_ID()) {
                                     values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_ARROW_COUNT_ID, 0));
+                                }
+                                else if (settings.stingers && index == data.DATA_STINGER_COUNT_ID()) {
+                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_STINGER_COUNT_ID, 0));
+                                }
+                                else if (settings.fire && index == data.DATA_SHARED_FLAGS_ID()) {
+                                    values.set(i, SynchedEntityData.DataValue.create(UPDATER.DATA_SHARED_FLAGS_ID, (byte) ((byte) value.value() & ~data.BIT_MAP_FIRE())));
                                 }
                             }
                         }

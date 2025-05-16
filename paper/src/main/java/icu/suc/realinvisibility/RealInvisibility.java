@@ -29,7 +29,7 @@ import java.util.Set;
 
 public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Listener, PacketListener {
 
-    private Indexes INDEXES;
+    private Data DATA;
     private Settings<EquipmentSlot> SETTINGS;
     private Updater UPDATER;
 
@@ -48,11 +48,11 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
             if (body) set.add(EquipmentSlot.BODY);
             return set;
         });
-        INDEXES = config.getA();
+        DATA = config.getA();
         SETTINGS = config.getB();
 
         if (SETTINGS.equipment && SETTINGS.metadata) {
-            UPDATER = new Updater(INDEXES, SETTINGS) {
+            UPDATER = new Updater(DATA, SETTINGS) {
                 @Override
                 protected void broadcast(@NotNull LivingEntity entity, @NotNull Collection<Packet<?>> packets) {
                     for (var connection : entity.moonrise$getTrackedEntity().seenBy) {
@@ -124,10 +124,17 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
                 if (ID.contains(id) && event.getUser().getEntityId() != id) {
                     for (EntityData data : packet.getEntityMetadata()) {
                         int index = data.getIndex();
-                        if (SETTINGS.particles && index == INDEXES.particles()) {
+                        if (SETTINGS.particles && index == DATA.DATA_EFFECT_PARTICLES()) {
                             data.setValue(List.of());
-                        } else if (SETTINGS.arrows && index == INDEXES.arrows()) {
+                        }
+                        else if (SETTINGS.arrows && index == DATA.DATA_ARROW_COUNT_ID()) {
                             data.setValue(0);
+                        }
+                        else if (SETTINGS.stingers && index == DATA.DATA_STINGER_COUNT_ID()) {
+                            data.setValue(0);
+                        }
+                        else if (SETTINGS.fire && index == DATA.DATA_SHARED_FLAGS_ID()) {
+                            data.setValue((byte) ((byte) data.getValue() & ~DATA.BIT_MAP_FIRE()));
                         }
                     }
                     packet.write();

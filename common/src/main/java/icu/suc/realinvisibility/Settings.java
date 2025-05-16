@@ -12,6 +12,8 @@ public abstract class Settings<T> {
     public final boolean body;
     public final boolean particles;
     public final boolean arrows;
+    public final boolean stingers;
+    public final boolean fire;
     public final boolean equipment;
     public final boolean metadata;
     public final Set<T> slots;
@@ -25,7 +27,9 @@ public abstract class Settings<T> {
             boolean helmet,
             boolean body,
             boolean particles,
-            boolean arrows
+            boolean arrows,
+            boolean stingers,
+            boolean fire
     ) {
         this.mainhand = mainhand;
         this.offhand = offhand;
@@ -36,8 +40,10 @@ public abstract class Settings<T> {
         this.body = body;
         this.particles = particles;
         this.arrows = arrows;
+        this.stingers = stingers;
+        this.fire = fire;
         this.equipment = mainhand || offhand || boots || leggings || chestplate || helmet || body;
-        this.metadata = particles || arrows;
+        this.metadata = particles || arrows || stingers || fire;
         this.slots = Set.copyOf(slots(mainhand, offhand, boots, leggings, chestplate, helmet, body));
     }
 

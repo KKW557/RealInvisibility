@@ -12,14 +12,17 @@ import java.util.Set;
 
 public class Config {
 
-    public static <T> @NotNull Pair<Indexes, Settings<T>> loadConfig(Path dir, Settings.Slots<T> function) {
-        var ip = loadConfig(dir, "indexes.properties");
+    public static <T> @NotNull Pair<Data, Settings<T>> loadConfig(Path dir, Settings.Slots<T> function) {
+        var ip = loadConfig(dir, "data.properties");
         var sp = loadConfig(dir, "settings.properties");
 
         return new Pair<>(
-                new Indexes(
-                        Integer.parseInt(ip.getProperty("particles", "10")),
-                        Integer.parseInt(ip.getProperty("arrows", "12"))
+                new Data(
+                        Integer.parseInt(ip.getProperty("DATA_EFFECT_PARTICLES")),
+                        Integer.parseInt(ip.getProperty("DATA_ARROW_COUNT_ID")),
+                        Integer.parseInt(ip.getProperty("DATA_STINGER_COUNT_ID")),
+                        Integer.parseInt(ip.getProperty("DATA_SHARED_FLAGS_ID")),
+                        Byte.parseByte(ip.getProperty("BIT_MAP_FIRE"))
                 ),
                 new Settings<>(
                         Boolean.parseBoolean(sp.getProperty("mainhand", "true")),
@@ -30,7 +33,9 @@ public class Config {
                         Boolean.parseBoolean(sp.getProperty("helmet", "true")),
                         Boolean.parseBoolean(sp.getProperty("body", "true")),
                         Boolean.parseBoolean(sp.getProperty("particles", "true")),
-                        Boolean.parseBoolean(sp.getProperty("arrows", "true"))
+                        Boolean.parseBoolean(sp.getProperty("arrows", "true")),
+                        Boolean.parseBoolean(sp.getProperty("stingers", "true")),
+                        Boolean.parseBoolean(sp.getProperty("fire", "true"))
                 ) {
                     @Override
                     protected Set<T> slots(boolean mainhand, boolean offhand, boolean boots, boolean leggings, boolean chestplate, boolean helmet, boolean body) {

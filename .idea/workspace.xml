@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ccd44d2-cab7-4c63-9171-36ec59254110" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Indexes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Updater.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Updater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/indexes.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/data.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +46,11 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RealInvisibility" type="f1a62948:ProjectNode" />
+                <item name="realinvisibility" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RealInvisibility" type="f1a62948:ProjectNode" />
+                <item name="realinvisibility" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
@@ -247,7 +254,7 @@
       <workItem from="1747313683262" duration="9211000" />
       <workItem from="1747375020165" duration="36000" />
       <workItem from="1747381141958" duration="6878000" />
-      <workItem from="1747404698398" duration="1432000" />
+      <workItem from="1747404698398" duration="4083000" />
     </task>
     <servers />
   </component>

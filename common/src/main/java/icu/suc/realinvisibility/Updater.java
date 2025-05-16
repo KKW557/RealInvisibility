@@ -26,12 +26,16 @@ public class Updater {
 
     public final EntityDataAccessor<List<ParticleOptions>> DATA_EFFECT_PARTICLES;
     public final EntityDataAccessor<Integer> DATA_ARROW_COUNT_ID;
+    public final EntityDataAccessor<Integer> DATA_STINGER_COUNT_ID;
+    public final EntityDataAccessor<Byte> DATA_SHARED_FLAGS_ID;
 
-    public Updater(@NotNull Indexes indexes, @NotNull Settings<?> settings) {
+    public Updater(@NotNull Data data, @NotNull Settings<?> settings) {
         this.settings = settings;
 
-        DATA_EFFECT_PARTICLES = new EntityDataAccessor<>(indexes.particles(), EntityDataSerializers.PARTICLES);
-        DATA_ARROW_COUNT_ID = new EntityDataAccessor<>(indexes.arrows(), EntityDataSerializers.INT);
+        DATA_EFFECT_PARTICLES = new EntityDataAccessor<>(data.DATA_EFFECT_PARTICLES(), EntityDataSerializers.PARTICLES);
+        DATA_ARROW_COUNT_ID = new EntityDataAccessor<>(data.DATA_ARROW_COUNT_ID(), EntityDataSerializers.INT);
+        DATA_STINGER_COUNT_ID = new EntityDataAccessor<>(data.DATA_STINGER_COUNT_ID(), EntityDataSerializers.INT);
+        DATA_SHARED_FLAGS_ID = new EntityDataAccessor<>(data.DATA_SHARED_FLAGS_ID(), EntityDataSerializers.BYTE);
     }
 
     public void $(@NotNull LivingEntity entity) {
@@ -101,6 +105,12 @@ public class Updater {
             }
             if (settings.arrows) {
                 list.add(SynchedEntityData.DataValue.create(DATA_ARROW_COUNT_ID, entity.getArrowCount()));
+            }
+            if (settings.stingers) {
+                list.add(SynchedEntityData.DataValue.create(DATA_STINGER_COUNT_ID, entity.getStingerCount()));
+            }
+            if (settings.fire) {
+                list.add(SynchedEntityData.DataValue.create(DATA_SHARED_FLAGS_ID, entity.getEntityData().get(DATA_SHARED_FLAGS_ID)));
             }
 
             packets.add(new ClientboundSetEntityDataPacket(entity.getId(), list));
