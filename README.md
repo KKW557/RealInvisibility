@@ -26,7 +26,6 @@ A plugin/mod designed for improving vanilla invisibility effect in Minecraft.
 * [packetevents](https://github.com/retrooper/packetevents)
 
 ### Fabric
-* [fabric-api](https://github.com/FabricMC/fabric)
 * [serverevents](https://github.com/sucj/serverevents)
 
 
