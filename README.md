@@ -58,6 +58,10 @@ body=true
 particles=true
 # Hide arrows in body?
 arrows=true
+# Hide stingers in body?
+stingers=true
+# Hide fire in body?
+fire=true
 ```
 
 
