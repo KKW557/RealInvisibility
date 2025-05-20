@@ -4,7 +4,7 @@ fabric-loader = "0.16.14"
 fabric-api = "0.124.0+1.21.5"
 packetevents = "2.8.0"
 fabric-loom = "1.11.0-alpha.24"
-paperweight = "2.0.0-beta.16"
+paperweight = "2.0.0-SNAPSHOT"
 serverevents = "1.0.5"
 userdev = "1.21.5-R0.1-SNAPSHOT"
 

@@ -10,7 +10,7 @@ repositories {
 dependencies {
     paperweight.paperDevBundle(libs.versions.userdev)
     implementation(libs.packetevents.spigot)
-    implementation(project(":common"))
+    implementation(project(":realinvisibility-common"))
 }
 
 tasks.processResources {
@@ -24,5 +24,5 @@ tasks.processResources {
 }
 
 tasks.jar {
-    from(project(":common").sourceSets.main.get().output)
+    from(project(":realinvisibility-common").sourceSets.main.get().output)
 }

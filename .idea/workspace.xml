@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ccd44d2-cab7-4c63-9171-36ec59254110" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Updater.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Updater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/data.properties" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/resources/data.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/resources/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/resources/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/resources/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +56,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="realinvisibility" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="realinvisibility" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="RealInvisibility" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -78,9 +89,6 @@
     &quot;accountId&quot;: &quot;984c4752-58ad-4eab-b443-d46db4f1a2e5&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/paper/.gradle/caches/paperweight/taskCache/mappedServerJar.jar!/net/minecraft/server/network/ServerCommonPacketListenerImpl.java" root0="SKIP_INSPECTION" />
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -136,10 +144,11 @@
       <recent name="F:\Development\Java\real-invisibility\common\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Development\Java\RealInvisibility\gradle" />
       <recent name="F:\Development\Java\real-invisibility\common\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.未命名">
+  <component name="RunManager" selected="Gradle.real-invisibility [clean]">
     <configuration name="real-invisibility [build]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -182,6 +191,17 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="RealInvisibility" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="RealInvisibility" />
+      <option name="filePath" />
       <method v="2" />
     </configuration>
     <configuration name="未命名" type="ShConfigurationType" nameIsGenerated="true">
@@ -249,7 +269,9 @@
       <workItem from="1747375020165" duration="36000" />
       <workItem from="1747381141958" duration="6878000" />
       <workItem from="1747404698398" duration="11393000" />
-      <workItem from="1747418681276" duration="75000" />
+      <workItem from="1747418681276" duration="247000" />
+      <workItem from="1747593538328" duration="340000" />
+      <workItem from="1747741090699" duration="1056000" />
     </task>
     <servers />
   </component>

@@ -14,8 +14,7 @@ dependencies {
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
     modImplementation(libs.serverevents)
-    implementation(project(":common"))
-    include(project(":common"))
+    implementation(project(":realinvisibility-common"))
 }
 
 loom {
@@ -41,4 +40,8 @@ tasks.processResources {
             )
         )
     }
+}
+
+tasks.jar {
+    from(project(":realinvisibility-common").sourceSets.main.get().output)
 }

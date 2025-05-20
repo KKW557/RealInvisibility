@@ -10,13 +10,4 @@ pluginManagement {
     }
 }
 
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from(files("libs.versions.toml"))
-        }
-    }
-}
-
-rootProject.name = "realinvisibility"
-include("common", "fabric", "paper")
+include("realinvisibility-common", "realinvisibility-fabric", "realinvisibility-paper")
