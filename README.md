@@ -8,8 +8,10 @@ A plugin/mod designed for improving vanilla invisibility effect in Minecraft.
 
 * **Packet-Level**, doesn't affect vanilla and can work with another plugin/mod.
 * Hide **Equipments**.
-* Hide **Arrows in Body**.
 * Hide **Effect Particles**.
+* Hide **Arrows in Body**.
+* Hide **Stringers in Body**.
+* Hide **Fire in Body**.
 * **Configurable** fully.
 
 
