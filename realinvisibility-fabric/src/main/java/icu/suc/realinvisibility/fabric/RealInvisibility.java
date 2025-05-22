@@ -1,5 +1,7 @@
-package icu.suc.realinvisibility;
+package icu.suc.realinvisibility.fabric;
 
+import icu.suc.realinvisibility.Config;
+import icu.suc.realinvisibility.Updater;
 import icu.suc.serverevents.ServerEvents;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
@@ -15,9 +17,9 @@ import java.util.*;
 
 public class RealInvisibility implements ModInitializer {
 
-    public static Updater UPDATER;
+    private static Updater UPDATER;
 
-    public static final Set<Integer> ID = new HashSet<>();
+    private static final Set<Integer> ID = new HashSet<>();
 
     @Override
     public void onInitialize() {

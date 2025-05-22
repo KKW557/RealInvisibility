@@ -8,14 +8,16 @@
     "557"
   ],
   "contact": {
-    "repo": "https://github.com/KKW557/RealInvisibility"
+    "repo": "https://github.com/KKW557/RealInvisibility",
+    "issues": "https://github.com/KKW557/RealInvisibility/issues",
+    "homepage": "https://modrinth.com/plugin/realinvisibility"
   },
   "license": "GPL-3.0",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "icu.suc.realinvisibility.RealInvisibility"
+      "icu.suc.realinvisibility.fabric.RealInvisibility"
     ]
   },
   "depends": {

@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ccd44d2-cab7-4c63-9171-36ec59254110" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/icu/suc/realinvisibility/Updater.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/java/icu/suc/realinvisibility/Updater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/data.properties" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/resources/data.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-common/src/main/resources/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/resources/fabric.mod.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-fabric/src/main/resources/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/src/main/java/icu/suc/realinvisibility/RealInvisibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/realinvisibility-paper/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +253,8 @@
       <workItem from="1747404698398" duration="11393000" />
       <workItem from="1747418681276" duration="247000" />
       <workItem from="1747593538328" duration="340000" />
-      <workItem from="1747741090699" duration="1056000" />
+      <workItem from="1747741090699" duration="2042000" />
+      <workItem from="1747746040553" duration="35000" />
     </task>
     <servers />
   </component>

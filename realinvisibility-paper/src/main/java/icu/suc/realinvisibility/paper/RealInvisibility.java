@@ -1,4 +1,4 @@
-package icu.suc.realinvisibility;
+package icu.suc.realinvisibility.paper;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListener;
@@ -11,6 +11,10 @@ import com.github.retrooper.packetevents.protocol.player.Equipment;
 import com.github.retrooper.packetevents.protocol.player.EquipmentSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityEquipment;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityMetadata;
+import icu.suc.realinvisibility.Config;
+import icu.suc.realinvisibility.Data;
+import icu.suc.realinvisibility.Settings;
+import icu.suc.realinvisibility.Updater;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.LivingEntity;
 import org.bukkit.craftbukkit.entity.CraftEntity;
