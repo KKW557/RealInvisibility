@@ -91,7 +91,9 @@ public class Updater {
                 }
             }
 
-            packets.add(new ClientboundSetEquipmentPacket(entity.getId(), list));
+            if (!list.isEmpty()) {
+                packets.add(new ClientboundSetEquipmentPacket(entity.getId(), list));
+            }
         }
 
         if (settings.metadata) {
@@ -113,7 +115,9 @@ public class Updater {
                 list.add(SynchedEntityData.DataValue.create(DATA_SHARED_FLAGS_ID, entity.getEntityData().get(DATA_SHARED_FLAGS_ID)));
             }
 
-            packets.add(new ClientboundSetEntityDataPacket(entity.getId(), list));
+            if (!list.isEmpty()) {
+                packets.add(new ClientboundSetEntityDataPacket(entity.getId(), list));
+            }
         }
 
         return packets;

@@ -56,11 +56,6 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
             UPDATER = new Updater(DATA, SETTINGS) {
                 @Override
                 protected void broadcast(@NotNull LivingEntity entity, @NotNull Collection<Packet<?>> packets) {
-                    var tracked = entity.moonrise$getTrackedEntity();
-                    if (Objects.isNull(tracked)) {
-                        super.broadcast(entity, packets);
-                        return;
-                    }
                     for (var connection : entity.moonrise$getTrackedEntity().seenBy) {
                         for (var packet : packets) {
                             connection.send(packet);
@@ -122,6 +117,7 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
                         }
                     }
                     packet.write();
+                    event.markForReEncode(true);
                 }
             }
             case PacketType.Play.Server.ENTITY_METADATA -> {
@@ -144,6 +140,7 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
                         }
                     }
                     packet.write();
+                    event.markForReEncode(true);
                 }
             }
             default -> {}
