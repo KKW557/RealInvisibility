@@ -15,7 +15,6 @@ import icu.suc.realinvisibility.Config;
 import icu.suc.realinvisibility.Data;
 import icu.suc.realinvisibility.Settings;
 import icu.suc.realinvisibility.Updater;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.LivingEntity;
 import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.bukkit.event.EventHandler;
@@ -26,7 +25,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Listener, PacketListener {
 
@@ -53,16 +54,7 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
         SETTINGS = config.getB();
 
         if (SETTINGS.equipment && SETTINGS.metadata) {
-            UPDATER = new Updater(DATA, SETTINGS) {
-                @Override
-                protected void broadcast(@NotNull LivingEntity entity, @NotNull Collection<Packet<?>> packets) {
-                    for (var connection : entity.moonrise$getTrackedEntity().seenBy) {
-                        for (var packet : packets) {
-                            connection.send(packet);
-                        }
-                    }
-                }
-            };
+            UPDATER = new Updater(DATA, SETTINGS);
 
             getServer().getPluginManager().registerEvents(this, this);
             PacketEvents.getAPI().getEventManager().registerListener(this, PacketListenerPriority.HIGHEST);
