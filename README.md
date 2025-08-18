@@ -75,4 +75,4 @@ fire=true
 
 ## License
 
-This project is licensed under the [MIT License](/LICENSE.txt) © 2025 KKW557.
+This project is licensed under the [MIT License](/LICENSE) © 2025 KKW557.

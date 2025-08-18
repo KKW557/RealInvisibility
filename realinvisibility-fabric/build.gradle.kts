@@ -24,9 +24,6 @@ loom {
             sourceSet(sourceSets.main.get())
         }
     }
-    mixin {
-        defaultRefmapName = "realinvisibility-refmap.json"
-    }
 }
 
 tasks.processResources {
@@ -44,4 +41,7 @@ tasks.processResources {
 
 tasks.jar {
     from(project(":realinvisibility-common").sourceSets.main.get().output)
+    from(rootProject.file("LICENSE")) {
+        rename { "${it}_realinvisibility" }
+    }
 }

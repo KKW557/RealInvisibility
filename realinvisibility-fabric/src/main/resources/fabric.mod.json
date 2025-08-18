@@ -3,7 +3,7 @@
   "id": "realinvisibility",
   "version": "${version}",
   "name": "Real Invisibility",
-  "description": "",
+  "description": "Improving vanilla invisibility effect in Minecraft.",
   "authors": [
     "557"
   ],
@@ -12,7 +12,7 @@
     "issues": "https://github.com/KKW557/RealInvisibility/issues",
     "homepage": "https://modrinth.com/plugin/realinvisibility"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
