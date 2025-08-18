@@ -69,8 +69,8 @@ fire=true
 
 ## Donation
 
-* [Patreon](https://www.patreon.com/kkw557/membership)
-* [Afdian](https://afdian.com/a/megawalls78)
+* [Patreon](https://patreon.com/KKW557)
+* [Afdian](https://afdian.com/a/KKW557)
 
 
 ## License
