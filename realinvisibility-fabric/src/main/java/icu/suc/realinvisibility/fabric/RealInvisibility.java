@@ -13,10 +13,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RealInvisibility implements ModInitializer {
 
@@ -58,7 +55,7 @@ public class RealInvisibility implements ModInitializer {
                 return true;
             });
             ServerEvents.LivingEntity.Effect.REMOVE.register((entity, effect) -> {
-                if (effect.getEffect().equals(MobEffects.INVISIBILITY)) {
+                if (Objects.nonNull(effect) && effect.getEffect().equals(MobEffects.INVISIBILITY)) {
                     int id = entity.getId();
                     ID.remove(id);
                     UPDATER.$(entity);
