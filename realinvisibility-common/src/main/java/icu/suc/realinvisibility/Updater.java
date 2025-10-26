@@ -21,7 +21,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Updater {
-
     private final Settings<?> settings;
 
     public final EntityDataAccessor<List<ParticleOptions>> DATA_EFFECT_PARTICLES;
@@ -38,7 +37,7 @@ public class Updater {
         DATA_SHARED_FLAGS_ID = new EntityDataAccessor<>(data.DATA_SHARED_FLAGS_ID(), EntityDataSerializers.BYTE);
     }
 
-    public void $(@NotNull LivingEntity entity) {
+    public void update(@NotNull LivingEntity entity) {
         broadcast(entity, packets(entity));
     }
 

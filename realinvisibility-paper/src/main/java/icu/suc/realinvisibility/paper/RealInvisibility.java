@@ -7,7 +7,6 @@ import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.entity.data.EntityData;
 import com.github.retrooper.packetevents.protocol.item.ItemStack;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
-import com.github.retrooper.packetevents.protocol.player.Equipment;
 import com.github.retrooper.packetevents.protocol.player.EquipmentSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityEquipment;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityMetadata;
@@ -28,14 +27,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Listener, PacketListener {
-
     private Data DATA;
     private Settings<EquipmentSlot> SETTINGS;
     private Updater UPDATER;
 
-    private static final Set<Integer> ID = new HashSet<>();
+    private static final Set<Integer> ID = ConcurrentHashMap.newKeySet();
 
     @Override
     public void onEnable() {
@@ -71,25 +70,26 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
 
     @EventHandler
     private void onEntityPotionEffect(@NotNull EntityPotionEffectEvent event) {
-        if (((CraftEntity) event.getEntity()).getHandle() instanceof LivingEntity entity && event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
+        if (!event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
+            return;
+        }
+
+        if (((CraftEntity) event.getEntity()).getHandle() instanceof LivingEntity entity) {
             int id = entity.getId();
             var action = event.getAction();
             if (action.equals(EntityPotionEffectEvent.Action.ADDED)) {
                 ID.add(id);
-                UPDATER.$(entity);
+                UPDATER.update(entity);
             } else if (action.equals(EntityPotionEffectEvent.Action.REMOVED) || action.equals(EntityPotionEffectEvent.Action.CLEARED)) {
                 ID.remove(id);
-                UPDATER.$(entity);
+                UPDATER.update(entity);
             }
         }
     }
 
     @EventHandler
     private void onPlayerQuit(@NotNull PlayerQuitEvent event) {
-        var player = event.getPlayer();
-        if (player.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
-            ID.remove(player.getEntityId());
-        }
+        ID.remove(event.getPlayer().getEntityId());
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -99,15 +99,23 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
             case PacketType.Play.Server.ENTITY_EQUIPMENT -> {
                 var packet = new WrapperPlayServerEntityEquipment(event);
                 int id = packet.getEntityId();
-                if (ID.contains(id) && event.getUser().getEntityId() != id) {
-                    for (Equipment equipment : packet.getEquipment()) {
-                        if (equipment.getItem().isEmpty()) {
-                            continue;
-                        }
-                        if (SETTINGS.slots.contains(equipment.getSlot())) {
-                            equipment.setItem(ItemStack.EMPTY);
-                        }
+
+                if (!ID.contains(id) || event.getUser().getEntityId() == id) {
+                    return;
+                }
+
+                boolean modified = false;
+                for (var equipment : packet.getEquipment()) {
+                    if (equipment.getItem().isEmpty()) {
+                        continue;
                     }
+                    if (SETTINGS.slots.contains(equipment.getSlot())) {
+                        equipment.setItem(ItemStack.EMPTY);
+                        modified = true;
+                    }
+                }
+
+                if (modified) {
                     packet.write();
                     event.markForReEncode(true);
                 }
@@ -115,22 +123,31 @@ public class RealInvisibility extends JavaPlugin implements org.bukkit.event.Lis
             case PacketType.Play.Server.ENTITY_METADATA -> {
                 var packet = new WrapperPlayServerEntityMetadata(event);
                 int id = packet.getEntityId();
-                if (ID.contains(id) && event.getUser().getEntityId() != id) {
-                    for (EntityData data : packet.getEntityMetadata()) {
-                        int index = data.getIndex();
-                        if (SETTINGS.particles && index == DATA.DATA_EFFECT_PARTICLES()) {
-                            data.setValue(List.of());
-                        }
-                        else if (SETTINGS.arrows && index == DATA.DATA_ARROW_COUNT_ID()) {
-                            data.setValue(0);
-                        }
-                        else if (SETTINGS.stingers && index == DATA.DATA_STINGER_COUNT_ID()) {
-                            data.setValue(0);
-                        }
-                        else if (SETTINGS.fire && index == DATA.DATA_SHARED_FLAGS_ID()) {
-                            data.setValue((byte) ((byte) data.getValue() & ~DATA.BIT_MAP_FIRE()));
-                        }
+
+                if (!ID.contains(id) || event.getUser().getEntityId() == id) {
+                    return;
+                }
+
+                boolean modified = false;
+                for (EntityData data : packet.getEntityMetadata()) {
+                    int index = data.getIndex();
+
+                    if (SETTINGS.particles && index == DATA.DATA_EFFECT_PARTICLES()) {
+                        data.setValue(List.of());
+                        modified = true;
+                    } else if (SETTINGS.arrows && index == DATA.DATA_ARROW_COUNT_ID()) {
+                        data.setValue(0);
+                        modified = true;
+                    } else if (SETTINGS.stingers && index == DATA.DATA_STINGER_COUNT_ID()) {
+                        data.setValue(0);
+                        modified = true;
+                    } else if (SETTINGS.fire && index == DATA.DATA_SHARED_FLAGS_ID()) {
+                        data.setValue((byte) ((byte) data.getValue() & ~DATA.BIT_MAP_FIRE()));
+                        modified = true;
                     }
+                }
+
+                if (modified) {
                     packet.write();
                     event.markForReEncode(true);
                 }

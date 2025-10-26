@@ -14,12 +14,12 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RealInvisibility implements ModInitializer {
-
     private static Updater UPDATER;
 
-    private static final Set<Integer> ID = new HashSet<>();
+    private static final Set<Integer> ID = ConcurrentHashMap.newKeySet();
 
     @Override
     public void onInitialize() {
@@ -48,9 +48,8 @@ public class RealInvisibility implements ModInitializer {
             });
             ServerEvents.LivingEntity.Effect.ADD.register((affectedEntity, effect, sourceEntity) -> {
                 if (effect.getEffect().equals(MobEffects.INVISIBILITY)) {
-                    int id = affectedEntity.getId();
-                    ID.add(id);
-                    UPDATER.$(affectedEntity);
+                    ID.add(affectedEntity.getId());
+                    UPDATER.update(affectedEntity);
                 }
                 return true;
             });
@@ -58,57 +57,68 @@ public class RealInvisibility implements ModInitializer {
                 if (Objects.nonNull(effect) && effect.getEffect().equals(MobEffects.INVISIBILITY)) {
                     int id = entity.getId();
                     ID.remove(id);
-                    UPDATER.$(entity);
+                    UPDATER.update(entity);
                 }
                 return true;
             });
             ServerEvents.Player.Leave.ALLOW_MESSAGE.register((player, message) -> {
-                if (player.hasEffect(MobEffects.INVISIBILITY)) {
-                    ID.remove(player.getId());
-                }
+                ID.remove(player.getId());
                 return true;
             });
             ServerEvents.Connection.Send.MODIFY.register((packetListener, packet) -> {
                 if (packetListener instanceof ServerGamePacketListenerImpl serverGamePacketListener) {
                     if (packet instanceof ClientboundSetEquipmentPacket setEquipmentPacket) {
                         int id = setEquipmentPacket.getEntity();
-                        if (ID.contains(id) && serverGamePacketListener.getPlayer().getId() != id) {
-                            var slots = setEquipmentPacket.getSlots();
-                            for (int i = 0; i < slots.size(); i++) {
-                                var equipment = slots.get(i);
-                                if (equipment.getSecond().isEmpty()) {
-                                    continue;
-                                }
-                                if (settings.slots.contains(equipment.getFirst())) {
-                                    slots.set(i, equipment.mapSecond(item -> ItemStack.EMPTY));
-                                }
+
+                        if (!ID.contains(id) || serverGamePacketListener.getPlayer().getId() == id) {
+                            return packet;
+                        }
+
+                        var slots = setEquipmentPacket.getSlots();
+                        for (int i = 0; i < slots.size(); i++) {
+                            var equipment = slots.get(i);
+                            if (equipment.getSecond().isEmpty()) {
+                                continue;
+                            }
+                            if (settings.slots.contains(equipment.getFirst())) {
+                                slots.set(i, equipment.mapSecond(item -> ItemStack.EMPTY));
                             }
                         }
                     } else if (packet instanceof ClientboundSetEntityDataPacket(
                             int id, List<SynchedEntityData.DataValue<?>> values
                     )) {
-                        if (ID.contains(id) && serverGamePacketListener.getPlayer().getId() != id) {
-                            var list = new ArrayList<SynchedEntityData.DataValue<?>>();
-                            for (SynchedEntityData.DataValue<?> value : values) {
-                                int index = value.id();
-                                if (settings.particles && index == data.DATA_EFFECT_PARTICLES()) {
-                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_EFFECT_PARTICLES, List.of()));
-                                }
-                                else if (settings.arrows && index == data.DATA_ARROW_COUNT_ID()) {
-                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_ARROW_COUNT_ID, 0));
-                                }
-                                else if (settings.stingers && index == data.DATA_STINGER_COUNT_ID()) {
-                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_STINGER_COUNT_ID, 0));
-                                }
-                                else if (settings.fire && index == data.DATA_SHARED_FLAGS_ID()) {
-                                    list.add(SynchedEntityData.DataValue.create(UPDATER.DATA_SHARED_FLAGS_ID, (byte) ((byte) value.value() & ~data.BIT_MAP_FIRE())));
-                                }
-                                else {
-                                    list.add(value);
-                                }
-                            }
-                            return new ClientboundSetEntityDataPacket(id, list);
+                        if (!ID.contains(id) || serverGamePacketListener.getPlayer().getId() == id) {
+                            return packet;
                         }
+
+                        var list = new ArrayList<SynchedEntityData.DataValue<?>>();
+                        boolean modified = false;
+
+                        for (SynchedEntityData.DataValue<?> value : values) {
+                            int index = value.id();
+                            SynchedEntityData.DataValue<?> newValue = null;
+
+                            if (settings.particles && index == data.DATA_EFFECT_PARTICLES()) {
+                                newValue = SynchedEntityData.DataValue.create(UPDATER.DATA_EFFECT_PARTICLES, List.of());
+                                modified = true;
+                            }
+                            else if (settings.arrows && index == data.DATA_ARROW_COUNT_ID()) {
+                                newValue = SynchedEntityData.DataValue.create(UPDATER.DATA_ARROW_COUNT_ID, 0);
+                                modified = true;
+                            }
+                            else if (settings.stingers && index == data.DATA_STINGER_COUNT_ID()) {
+                                newValue = SynchedEntityData.DataValue.create(UPDATER.DATA_STINGER_COUNT_ID, 0);
+                                modified = true;
+                            }
+                            else if (settings.fire && index == data.DATA_SHARED_FLAGS_ID()) {
+                                newValue = SynchedEntityData.DataValue.create(UPDATER.DATA_SHARED_FLAGS_ID, (byte) ((byte) value.value() & ~data.BIT_MAP_FIRE()));
+                                modified = true;
+                            }
+
+                            list.add(Objects.nonNull(newValue) ? newValue : value);
+                        }
+
+                        return modified ? new ClientboundSetEntityDataPacket(id, list) : packet;
                     }
                 }
                 return packet;

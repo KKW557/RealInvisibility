@@ -11,7 +11,6 @@ import java.util.Properties;
 import java.util.Set;
 
 public class Config {
-
     public static <T> @NotNull Pair<Data, Settings<T>> loadConfig(Path dir, Settings.Slots<T> function) {
         var ip = loadConfig(dir, "data.properties");
         var sp = loadConfig(dir, "settings.properties");
