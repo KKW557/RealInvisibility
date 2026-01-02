@@ -3,6 +3,7 @@ package icu.suc.realinvisibility;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -41,8 +42,8 @@ public class Updater {
         broadcast(entity, packets(entity));
     }
 
-    protected @NotNull Collection<Packet<?>> packets(@NotNull LivingEntity entity) {
-        Collection<Packet<?>> packets = new HashSet<>();
+    protected @NotNull Collection<Packet<? super ClientGamePacketListener>> packets(@NotNull LivingEntity entity) {
+        Collection<Packet<? super ClientGamePacketListener>> packets = new HashSet<>();
 
         if (settings.equipment) {
             List<Pair<EquipmentSlot, ItemStack>> list = new ArrayList<>();
@@ -122,10 +123,10 @@ public class Updater {
         return packets;
     }
 
-    protected void broadcast(@NotNull LivingEntity entity, @NotNull Collection<Packet<?>> packets) {
+    protected void broadcast(@NotNull LivingEntity entity, @NotNull Collection<Packet<? super ClientGamePacketListener>> packets) {
         if (entity.level().getChunkSource() instanceof ServerChunkCache cache) {
             for (var packet : packets) {
-                cache.broadcast(entity, packet);
+                cache.sendToTrackingPlayers(entity, packet);
             }
         }
     }

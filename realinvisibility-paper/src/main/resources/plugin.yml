@@ -4,5 +4,5 @@ author: '557'
 version: '${version}'
 website: 'https://modrinth.com/plugin/realinvisibility'
 main: icu.suc.realinvisibility.paper.RealInvisibility
-api-version: '1.21'
+api-version: '1.21.9'
 depend: [ packetevents ]

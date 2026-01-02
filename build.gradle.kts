@@ -1,5 +1,5 @@
 group = "icu.suc"
-version = "2.1.7"
+version = "2026.1.1"
 
 subprojects {
     plugins.apply("java")
