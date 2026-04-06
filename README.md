@@ -1,8 +1,16 @@
-# Real Invisibility
-
 ![Image](https://cdn.modrinth.com/data/GJ2KsrYm/images/7dd8b018e0affdfb5dfe2319fc424a48bd605425.gif)
 
-A plugin/mod designed for improving vanilla invisibility effect in Minecraft.
+# Real Invisibility
+
+[![GitHub License](https://img.shields.io/github/license/KKW557/realinvisibility)](https://github.com/KKW557/realinvisibility?tab=MIT-1-ov-file#readme)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KKW557/realinvisibility/build.yml)](https://github.com/KKW557/realinvisibility/actions/workflows/build.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/KKW557/realinvisibility?include_prereleases)](https://github.com/KKW557/realinvisibility/releases/latest)
+
+[![Modrinth Downloads](https://img.shields.io/modrinth/dt/realinvisibility?logo=modrinth)](https://modrinth.com/mod/realinvisibility)
+[![Spiget Downloads](https://img.shields.io/spiget/downloads/119210?logo=spigotmc)](https://www.spigotmc.org/resources/119210)
+[![Hangar Downloads](https://img.shields.io/hangar/dt/realinvisibility?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAAEgBckRAAAJ7UlEQVR4nMRZeVAU2RlvxGxSSa2Vs2r%2FSCqVrdwmW6tYCMzNXDDAiAfoLoUHS1ZU3CgKqEhxK6AMw62gSMQDUXGTCHhtMOh64LErwoqggotHysTS9eBQ1l%2Fe62GGbqZ7ZjjW%2FVV9NT3d%2Fd73fe9977uaYThAhz%2F3L8PI5XJwSSqVgn2g0WhQUVEBCnod4E8e9HTr2D8U27dvZ38TVJqhEVbQ6w98BqdSqVTgko3HkFhwLBV7Mz%2FlLRvzp0%2BfstfsA9mGz20Pjh49yl7PNdfypaK%2FlAqaJwpLxZeAgyedWngs243Clomoif0DBozz%2BC%2B8mjHXNj2l5uZmnD9%2FnnfPprPK1MEUtU6wPeDCz8%2FPdl89R4%2FeL7WWQT1f6gQHcJd7iUyJ5VXeQ3pw2efm5iI5OZknUoS3FPAP4%2BsyEDyPiOcGv6QobCnW4nmXXnRh%2BFv4X6NrL7IvEymTClZg%2FZHfIq7KDV%2BTFbR7ycfHx84QBA3DinIfJU9BCq1Wy7tne5nuwccq4WUVHDB9TS1O6QPZm%2BXl5baXs7KyeANO%2Fl1iGXThmA8y098W3LS%2Bvj7bgLX1vwfdYHbQnPhM3oDOzk6sX7%2BevQ4ODrZs5uafQG26Adsq0ZvU4Cja29t54lCiy5vfwVnW4askNIC3D8MPi0uHJ6aCLrMblJuuobdbL37CXAEuejC9xP1UlkyFr6kDf1pYhCJyIouvfHdM87LovOwLdUYdMhp%2BivrkyeibGcKuwXByOpHMy4u3uKMhe%2Fc4iIHgUOyVCw96%2BPChnZH19%2FcjOjraNQaJR99GSq07jmsMdgOEYPXAQhQRLkUf2SseA72pGTEHpuLTQD6Dly9f2k1eWVlpu6aaGQz8MWEzp0KRcQl3r6rQd2eQUc9tHXbt0GBZyZ%2BdSv%2Fq1Sv2t6Ojw3aP6ypilL4wXXCHZ%2BxhaPJu8pfqk0O%2BDhk0NTXZThU9s93d3Xan7C9SGe6%2F54%2Bi1sFwxMXwI0rjwrVr1%2BwYObIi6t1FTXY4g3E1Uy5u6I3MC2Oo7QD1BYegdt0fUXDFDe%2Fnh2C2%2Bd94fluLx7cDnM7lFEUtDOMZf4SGWOwo8mHdRW%2BXbuwTC4FOTn9V5rbxn5yGgysNUoTn7Yck%2BTRW1Ewh2glYymjQSw7MwYpp8M1uhdfyZNaLZp6agCTTDzAw00VHJzo5SVlyShdgjikSxTWT0BWuHZ0npaAm5iwDcEQymcwxI%2FrSWM6AaOgDSaNoWijGIDQ01OaHEhISRs7gSvg7ogzCwsIEnd6xY8dcY1D4xQTkfz4BYgzEsG7dOtcYhIRUswnYs9mz7Bg0NDQITh4RESG6RE%2B6tOQNDgPqApbukmJb6s%2FtGAihvr4eGRkZogwMm06RFEYHmoWweD%2B%2FmpEknUIuCRJcBgEBAYIMjh8%2FbrtOT0%2B3Y5D0ya%2BwqSTcwqTb2%2BICYvI3Ys3hyTwGZrPZbnJrwKFISkpif3fu3MljULrtZ5AkNqK6bCr6u%2F3ISb1lYJ6TkKna3MJjwI29VtAsgmLlypW2ezRucxnce8%2BA1YemkMy0fWgnnv5Hx9z7Qs1jUFxcbMeA1icULS0tvPtcBtRt0HDpsWwvyQCvcw4bYcJlEBUVZcdgz549aGxsZJ%2BXlJSw93p6euwYJB12E47JzqyoqKgIiYmJvHeMRqMdg4yNPyIM3J0zyM7OttuDyMhIh66iL4iEWuM8YZch5ouolLTMOHLkiFMG%2F%2FOfhYFgEff9jXlTLgNnlYgjUigUrgWePiPN%2F%2BfZotWNcDWKat5E7uXvQZpci4N7%2FUlxPizBHQlomU1jRM4Zam5uyD73Q0xbVgFDbhNuXlSMbXIuiloZprrV4hBp64F6yjHXYuMB6uSoltThdV1WIH9XGKPe3M4K6ptrLVYZZkvrG9%2BilAIAQiyZJaGGj6ejrEQOo%2FkM5Bs%2Bw7sfboPn0jSs%2FedkNq2yUk7TkEeBIYSBcuG3ITgx7Ls6PLimxs5tCszLPQzvuH9Ak7AKaQ2%2FQCHpjGWccEdW2SQcjP8dboVrRAvhr8V8wEjh4eFB0zynVLlFxeyvVCBsdRyMsQuQnfYOqhfIcSYwCJcMM3DOz4hGnRHHtQbUafxxyFeH%2FUodtipJwJGrUCBTwSxVwOQjR7aXHFneMqjJvLQSovNLJJLRKWDtUo3F8Y2VhJuqDoDgEOZrUpbRBK%2BUrMhoFKDlcl5eHvbt24fw8PDXrMDMEDb9pbRTqhyRAosWLcKDBw%2FsIrgV9%2B%2FfR1lZGWbPnj3%2BCmy9yKbXTEqdO04v9WQVOKDSuqQAbQPcvHlTVHAh0AKjrq4OQUFB46NAQbOld0opofgNVoE6td6pAjR9f%2FHihcuC07YP3amR7MC6VSRy3hnsmQvBN7uDUWRexZSIHNLOd4f5shvOR3njX7pAhwrQck2oTyW24jQJH80ZUMz5EJW7ZrARmq0ESKzhQZncQCLkDRLK2zFtyWaLEvvfxDn9DIcKtLW1uSQ87erR9Lm3t5f9%2F%2BjRI1RVVbElpSsKhERNhj4tB1HmElxtlLFK0E4gOpVDnwnazspIuuxHkvh2SFYTJYgplc%2F3FFWAW3U4At0hKvzwnTpx4gRiYmJw9uxZ9jowMFBUgVUaJTZ9OhGKNRugNbWhfKsPvrpBcyZLxGf6O3Wk06jHc5K71B%2FwwizTSWhTzUjc%2FWNRBUpLS11SwGQysf17K2hWvnjxYvZrARfUCYgpEK9So3HlVLaImb48A6qc60goXIvaalJUcvGs08B%2Bz3tyS4vU4lVQfbRRVAFqAs5Aq6nY2Fjbf%2FpBIjU1VfR969eM4QosJ9F6YEYoEmvciHl%2FB9MWZ0JFviD4ErMPqRY4219169lqed8OX1EFrFWxI1y6dMn2xZOeA1rK077A8NW3gj4XUiBKJmdzpGMr3kXeZxNZJaaTPpu3qduxa5XLvUVTCer7rYdSDBcuXGDLfgpqckIROz4%2BHqdPn0ZXV5eoCUVKLArQXfjrNoY1pUJCtJYYUy6UmZnpUIHHjx%2FbPnYJfbhw1Y1%2BQHrfA4Nd56sRCiQfciK4qwpwacmSJWxkHW4eKSkpbApBn49WAdq8fxY4ZzDdJq3C15GNUvOIi4tjbV6v149qDqsCwRIJ7vkFMSTvcFX0sSswXjTibJQLWkgQJWCluV4%2BSPOS8iidUCZJuzeRoiRf4YtihRblpFjZrfGDKViGpR%2F9Gsvz30K0%2BZeQzI%2BGKroY8atlOPg3JdLXK2xzOyJa1IwL6DJQG7SWfv2kJGxbpMKu%2BN8grez7yDzJoOCqpY2xuWkSgjcuhHd8DfuRdoU5C2fqZWyw7CE5zZM76vERaqygwlIqJBSQGkkK9zIoNlyhLRLMN1dhb5knHl5XW8I%2B7VLcG6Edv26oSMtEmTPUNum7Y2C7FH13Sav3G8L%2FAQAA%2F%2F%2FiCawZAAAABklEQVQDAIp58C6nzIKcAAAAAElFTkSuQmCC)](https://hangar.papermc.io/KKW557/realinvisibility)
+
+A plugin/mod designed for improving vanilla **invisibility** effect in Minecraft.
 
 ## Features
 
@@ -13,31 +21,6 @@ A plugin/mod designed for improving vanilla invisibility effect in Minecraft.
 * Hide **Stringers in Body**.
 * Hide **Fire in Body**.
 * **Configurable** fully.
-
-
-## Resource
-
-* [Modrinth](https://modrinth.com/plugin/realinvisibility)
-* [Hanger](https://hangar.papermc.io/KKW557/RealInvisibility)
-* [Spigot](https://www.spigotmc.org/resources/realinvisibility.119210)
-
-
-## Dependency
-
-### Paper
-* [packetevents](https://github.com/retrooper/packetevents)
-
-### Fabric
-* [serverevents](https://github.com/sucj/serverevents)
-
-
-## Compilation
-
-To build **RealInvisibility**, you need JDK 21 or higher installed on your system.
-
-* Linux or macOS: `./gradlew build`
-* Windows: `gradlew build`
-
 
 ## Configuration
 
@@ -66,13 +49,6 @@ stingers=true
 fire=true
 ```
 
-
-## Donation
-
-* [Patreon](https://patreon.com/KKW557)
-* [Afdian](https://afdian.com/a/KKW557)
-
-
 ## License
 
-This project is licensed under the [MIT License](/LICENSE) © 2025 KKW557.
+This project is licensed under the [MIT License](LICENSE) © 2025 557.
