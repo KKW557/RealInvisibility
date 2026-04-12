@@ -8,6 +8,9 @@ import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Called when a value in the packet to be modified.
+ */
 public class RealInvisibilityEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
@@ -23,10 +26,16 @@ public class RealInvisibilityEvent extends PlayerEvent implements Cancellable {
         this.setting = setting;
     }
 
+    /**
+     * @return the entity id
+     */
     public int getEntityId() {
         return entityId;
     }
 
+    /**
+     * @return the setting
+     */
     public Setting getSetting() {
         return setting;
     }

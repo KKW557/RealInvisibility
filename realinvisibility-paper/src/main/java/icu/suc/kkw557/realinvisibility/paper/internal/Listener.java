@@ -137,17 +137,21 @@ public record Listener(Set<Integer> tracked,
 
     private boolean clearEquipment(@NotNull Player player, int entityId, @NotNull Setting setting, @NotNull Equipment equipment) {
         if (!settings.contains(setting)) return true;
-        boolean cancelled = new RealInvisibilityEvent(player, entityId, setting).callEvent();
-        if (cancelled) return true;
-        equipment.setItem(ItemStack.EMPTY);
-        return false;
+        boolean bool = new RealInvisibilityEvent(player, entityId, setting).callEvent();
+        if (bool) {
+            equipment.setItem(ItemStack.EMPTY);
+            return false;
+        }
+        return true;
     }
 
     private <T> boolean clearData(@NotNull Player player, int entityId, @NotNull Setting setting, EntityData<Object> data, @NotNull Object value) {
         if (!settings.contains(setting)) return true;
-        boolean cancelled = new RealInvisibilityEvent(player, entityId, setting).callEvent();
-        if (cancelled) return true;
-        data.setValue(value);
-        return false;
+        boolean bool = new RealInvisibilityEvent(player, entityId, setting).callEvent();
+        if (bool) {
+            data.setValue(value);
+            return false;
+        }
+        return true;
     }
 }
