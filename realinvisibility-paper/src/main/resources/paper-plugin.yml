@@ -1,0 +1,12 @@
+name: "realinvisibility"
+version: "${version}"
+main: icu.suc.kkw557.realinvisibility.paper.internal.Main
+description: "Improving vanilla invisibility effect in Minecraft."
+api-version: "${minecraft}"
+authors: [ "557" ]
+website: "https://modrinth.com/plugin/realinvisibility"
+dependencies:
+  server:
+    packetevents:
+      load: BEFORE
+      required: true

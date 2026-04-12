@@ -1,23 +1,29 @@
 plugins {
-    alias(libs.plugins.paperweight)
+    alias(libs.plugins.paperweight.userdev)
 }
 
 repositories {
-    maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
-    maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
+    maven("https://repo.codemc.io/repository/maven-releases/")
+    maven("https://repo.codemc.io/repository/maven-snapshots/")
 }
 
 dependencies {
-    paperweight.paperDevBundle(libs.versions.userdev)
+    paperweight.paperDevBundle(libs.versions.paperweight.bundle)
     implementation(libs.packetevents.spigot)
     implementation(project(":realinvisibility-common"))
 }
 
 tasks.processResources {
-    filesMatching("plugin.yml") {
+    filteringCharset = "UTF-8"
+
+    inputs.property("version", project.version)
+    inputs.property("minecraft", libs.versions.minecraft.get())
+
+    filesMatching("paper-plugin.yml") {
         expand(
             mapOf(
                 "version" to project.version,
+                "minecraft" to libs.versions.minecraft.get()
             )
         )
     }

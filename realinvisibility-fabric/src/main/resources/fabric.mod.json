@@ -8,21 +8,22 @@
     "557"
   ],
   "contact": {
-    "repo": "https://github.com/KKW557/RealInvisibility",
-    "issues": "https://github.com/KKW557/RealInvisibility/issues",
+    "repo": "https://github.com/KKW557/realinvisibility",
+    "issues": "https://github.com/KKW557/realinvisibility/issues",
     "homepage": "https://modrinth.com/plugin/realinvisibility"
   },
   "license": "MIT",
-  "icon": "icon.png",
+  "icon": "pack.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "icu.suc.realinvisibility.fabric.RealInvisibility"
+      "icu.suc.kkw557.realinvisibility.fabric.internal.Main"
     ]
   },
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "minecraft": ">=${minecraft_version}",
-    "serverevents": ">=${serverevents_version}"
+    "fabricloader": ">=${loader}",
+    "fabric-api": ">=${api}",
+    "minecraft": ">=${minecraft}",
+    "serverevents": ">=${serverevents}"
   }
 }

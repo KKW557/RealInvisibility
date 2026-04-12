@@ -14,13 +14,13 @@ A plugin/mod designed for improving vanilla **invisibility** effect in Minecraft
 
 ## Features
 
-* **Packet-Level**, doesn't affect vanilla and can work with another plugin/mod.
-* Hide **Equipments**.
-* Hide **Effect Particles**.
-* Hide **Arrows in Body**.
-* Hide **Stringers in Body**.
-* Hide **Fire in Body**.
-* **Configurable** fully.
+- **Packet-Level**, doesn't affect vanilla and can work with another plugin/mod.
+- Hide **Equipments**.
+- Hide **Effect Particles**.
+- Hide **Arrows in Body**.
+- Hide **Stringers in Body**.
+- Hide **Fire in Body**.
+- **Configurable** fully.
 
 ## Configuration
 
@@ -30,23 +30,25 @@ mainhand=true
 # Hide items in offhand?
 offhand=true
 # Hide boots?
-boots=true
+feet=true
 # Hide leggings?
-leggings=true
-# Hide chestplate?
-chestplate=true
-# Hide helmet?
-helmet=true
-# Hide animals' armor?
+legs=true
+# Hide chestplates?
+chest=true
+# Hide helmets?
+head=true
+# Hide animals' armors?
 body=true
-# Hide effect particles?
-particles=true
-# Hide arrows in body?
-arrows=true
-# Hide stingers in body?
-stingers=true
-# Hide fire in body?
+# Hide saddles?
+saddle=true
+# Hide fire in the body?
 fire=true
+# Hide effect particles?
+effect_particles=true
+# Hide arrows in the body?
+arrows=true
+# Hide stingers in the body?
+stingers=true
 ```
 
 ## License
