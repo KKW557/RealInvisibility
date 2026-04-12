@@ -92,7 +92,9 @@ dependencies {
 }
 ```
 
-Use `com.github.retrooper.packetevents.event.PacketListener.onPacketEventExternal(icu.suc.kkw557.realinvisibility.paper.RealInvisibilityEvent event)` to callback.
+Use
+`com.github.retrooper.packetevents.event.PacketListener.onPacketEventExternal(icu.suc.kkw557.realinvisibility.paper.RealInvisibilityEvent event)`
+to callback.
 
 See [packetevents](https://docs.packetevents.com/) for more info.
 

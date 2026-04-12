@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
  * Called when a value in the packet to be modified.
  */
 public class RealInvisibilityEvent extends PacketEvent implements CancellableEvent {
-
     private final Player player;
     private final int entityId;
     private final Setting setting;

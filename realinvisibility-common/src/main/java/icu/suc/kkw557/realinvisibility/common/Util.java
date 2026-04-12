@@ -64,7 +64,7 @@ public final class Util {
     /**
      * Broadcast a living entity's equipment and metadata.
      *
-     * @param entity the entity
+     * @param entity   the entity
      * @param settings enabled features
      */
     public static void update(@NotNull LivingEntity entity, @NotNull Set<Setting> settings) {

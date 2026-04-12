@@ -27,9 +27,9 @@ public final class RealInvisibilityEvents {
         /**
          * Called when a value in the packet to be modified.
          *
-         * @param player the player
+         * @param player   the player
          * @param entityId the entity id
-         * @param setting the setting
+         * @param setting  the setting
          * @return {@code true} if the value should be modified, otherwise {@code false}
          */
         boolean allow(@NotNull ServerPlayer player, int entityId, @NotNull Setting setting);

@@ -2,9 +2,9 @@ package icu.suc.kkw557.realinvisibility.paper.internal;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
+import icu.suc.kkw557.realinvisibility.common.Setting;
 import icu.suc.kkw557.realinvisibility.common.Util;
 import org.bukkit.plugin.java.JavaPlugin;
-import icu.suc.kkw557.realinvisibility.common.Setting;
 
 import java.io.IOException;
 import java.util.Set;
