@@ -71,6 +71,10 @@ Excluded the player **self** and **client-only** entity.
 
 No test.
 
+### Can hide sprinting/swimming particles?
+
+This will lead to client simulation issues, and thus is not supported.
+
 ## Development
 
 The plugin provides a hook mechanism that
