@@ -1,5 +1,7 @@
 package icu.suc.kkw557.realinvisibility.common;
 
+import org.jetbrains.annotations.ApiStatus;
+
 public enum Setting {
     /**
      * Hide items in mainhand?
@@ -58,10 +60,12 @@ public enum Setting {
         this.comments = comments;
     }
 
+    @ApiStatus.Internal
     public String getName() {
         return name;
     }
 
+    @ApiStatus.Internal
     public String getComments() {
         return comments;
     }
