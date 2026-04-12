@@ -1,19 +1,18 @@
 package icu.suc.kkw557.realinvisibility.paper;
 
+import com.github.retrooper.packetevents.event.CancellableEvent;
+import com.github.retrooper.packetevents.event.PacketEvent;
 import icu.suc.kkw557.realinvisibility.common.Setting;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Called when a value in the packet to be modified.
  */
-public class RealInvisibilityEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList HANDLER_LIST = new HandlerList();
+public class RealInvisibilityEvent extends PacketEvent implements CancellableEvent {
 
+    private final Player player;
     private final int entityId;
     private final Setting setting;
 
@@ -21,9 +20,16 @@ public class RealInvisibilityEvent extends PlayerEvent implements Cancellable {
 
     @ApiStatus.Internal
     public RealInvisibilityEvent(@NotNull Player player, int entityId, @NotNull Setting setting) {
-        super(player);
+        this.player = player;
         this.entityId = entityId;
         this.setting = setting;
+    }
+
+    /**
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
     }
 
     /**
@@ -48,16 +54,5 @@ public class RealInvisibilityEvent extends PlayerEvent implements Cancellable {
     @Override
     public void setCancelled(boolean cancel) {
         this.cancelled = cancel;
-    }
-
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLER_LIST;
-    }
-
-    @NotNull
-    public static HandlerList getHandlerList() {
-        return HANDLER_LIST;
     }
 }

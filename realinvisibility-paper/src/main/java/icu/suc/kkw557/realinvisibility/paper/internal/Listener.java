@@ -1,5 +1,7 @@
 package icu.suc.kkw557.realinvisibility.paper.internal;
 
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.PacketEventsAPI;
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.entity.data.EntityData;
@@ -77,11 +79,11 @@ public record Listener(Set<Integer> tracked,
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void onPacketSend(@NotNull PacketSendEvent event) {
-        var player = (Player) event.getPlayer();
-        int playerId = player.getEntityId();
-
         switch (event.getPacketType()) {
             case PacketType.Play.Server.ENTITY_EQUIPMENT -> {
+                var player = (Player) event.getPlayer();
+                int playerId = player.getEntityId();
+
                 var packet = new WrapperPlayServerEntityEquipment(event);
                 int id = packet.getEntityId();
 
@@ -109,8 +111,14 @@ public record Listener(Set<Integer> tracked,
                 event.markForReEncode(true);
             }
             case PacketType.Play.Server.ENTITY_METADATA -> {
+                var player = (Player) event.getPlayer();
+                int playerId = player.getEntityId();
+
                 var packet = new WrapperPlayServerEntityMetadata(event);
                 int id = packet.getEntityId();
+
+                if (playerId == id) return;
+                if (!tracked.contains(id)) return;
 
                 boolean keep = true;
                 for (EntityData data : packet.getEntityMetadata()) {
@@ -137,21 +145,21 @@ public record Listener(Set<Integer> tracked,
 
     private boolean clearEquipment(@NotNull Player player, int entityId, @NotNull Setting setting, @NotNull Equipment equipment) {
         if (!settings.contains(setting)) return true;
-        boolean bool = new RealInvisibilityEvent(player, entityId, setting).callEvent();
-        if (bool) {
-            equipment.setItem(ItemStack.EMPTY);
-            return false;
-        }
-        return true;
+        if (callEvent(player, entityId, setting)) return true;
+        equipment.setItem(ItemStack.EMPTY);
+        return false;
     }
 
-    private <T> boolean clearData(@NotNull Player player, int entityId, @NotNull Setting setting, EntityData<Object> data, @NotNull Object value) {
+    private boolean clearData(@NotNull Player player, int entityId, @NotNull Setting setting, EntityData<Object> data, @NotNull Object value) {
         if (!settings.contains(setting)) return true;
-        boolean bool = new RealInvisibilityEvent(player, entityId, setting).callEvent();
-        if (bool) {
-            data.setValue(value);
-            return false;
-        }
-        return true;
+        if (callEvent(player, entityId, setting)) return true;
+        data.setValue(value);
+        return false;
+    }
+
+    private boolean callEvent(@NotNull Player player, int entityId, @NotNull Setting setting) {
+        var event = new RealInvisibilityEvent(player, entityId, setting);
+        PacketEvents.getAPI().getEventManager().callEvent(event);
+        return event.isCancelled();
     }
 }

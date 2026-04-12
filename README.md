@@ -84,13 +84,17 @@ repositories {
 
 ### Paper
 
+Import [packetevents](https://github.com/retrooper/packetevents) firstly.
+
 ```groovy
 dependencies {
     implementation "icu.suc.kkw557:realinvisibility-paper:<version>"
 }
 ```
 
-Use `@EventHandler` to subscribe `icu.suc.kkw557.realinvisibility.paper.RealInvisibilityEvent`
+Use `com.github.retrooper.packetevents.event.PacketListener.onPacketEventExternal(icu.suc.kkw557.realinvisibility.paper.RealInvisibilityEvent event)` to callback.
+
+See [packetevents](https://docs.packetevents.com/) for more info.
 
 ### Fabric
 
@@ -100,7 +104,7 @@ dependencies {
 }
 ```
 
-Call `icu.suc.kkw557.realinvisibility.fabric.RealInvisibilityEvents.ALLOW`
+Call `icu.suc.kkw557.realinvisibility.fabric.RealInvisibilityEvents.ALLOW` to register.
 
 ## License
 
