@@ -1,6 +1,6 @@
 val minecraft = libs.versions.minecraft.get()
 
-val targetJavaVersion = 21
+val targetJavaVersion = 25
 
 subprojects {
     project.version = "${project.version}+${minecraft}"

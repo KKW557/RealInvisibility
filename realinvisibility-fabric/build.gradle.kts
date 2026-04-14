@@ -8,11 +8,10 @@ repositories {
 
 dependencies {
     minecraft(libs.minecraft)
-    mappings(loom.officialMojangMappings())
-    modImplementation(libs.fabric.loader)
-    modImplementation(libs.fabric.api)
-    modImplementation(libs.serverevents)
-    implementation(project(path = ":realinvisibility-common", configuration = "namedElements"))
+    implementation(libs.fabric.loader)
+    implementation(libs.fabric.api)
+    implementation(libs.serverevents)
+    implementation(project(":realinvisibility-common"))
     include(project(":realinvisibility-common"))
 }
 

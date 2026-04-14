@@ -12,6 +12,6 @@ pluginManagement {
 
 include(
     "realinvisibility-common",
-    "realinvisibility-paper",
+//    "realinvisibility-paper",
     "realinvisibility-fabric"
 )

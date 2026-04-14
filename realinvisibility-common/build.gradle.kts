@@ -4,5 +4,4 @@ plugins {
 
 dependencies {
     minecraft(libs.minecraft)
-    mappings(loom.officialMojangMappings())
 }
