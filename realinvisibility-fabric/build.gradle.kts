@@ -12,7 +12,8 @@ dependencies {
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
     modImplementation(libs.serverevents)
-    implementation(project(":realinvisibility-common"))
+    implementation(project(path = ":realinvisibility-common", configuration = "namedElements"))
+    include(project(":realinvisibility-common"))
 }
 
 tasks.processResources {
@@ -35,8 +36,4 @@ tasks.processResources {
             )
         )
     }
-}
-
-tasks.jar {
-    from(project(":realinvisibility-common").sourceSets.main.get().output)
 }

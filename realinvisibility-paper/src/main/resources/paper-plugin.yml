@@ -1,4 +1,4 @@
-name: "realinvisibility"
+name: "RealInvisibility"
 version: "${version}"
 main: icu.suc.kkw557.realinvisibility.paper.internal.Main
 description: "Improving vanilla invisibility effect in Minecraft."
